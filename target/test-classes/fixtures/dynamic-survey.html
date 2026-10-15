@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Student Interests &amp; Hobbies</title></head>
+<body><main><h1>Student Interests &amp; Hobbies</h1><section aria-labelledby="hobbies-section"><h2 id="hobbies-section">Hobbies</h2>
+<fieldset><legend>Do you have a hobby?</legend><label><input type="radio" name="q_3" value="Yes"> Yes</label><label><input type="radio" name="q_3" value="No"> No</label></fieldset>
+<div id="q_4-container" hidden><label for="q_4">What is your hobby? (If Yes)</label><input id="q_4" name="q_4" type="text"></div></section></main>
+<script>
+// Mirrors the supplied schema rule: q_4 is visible only when q_3 equals "Yes".
+const answers=document.querySelectorAll('input[name="q_3"]');
+const container=document.querySelector('#q_4-container'); const followUp=document.querySelector('#q_4');
+answers.forEach(answer=>answer.addEventListener('change',()=>{const visible=document.querySelector('input[name="q_3"]:checked')?.value==='Yes';container.hidden=!visible;followUp.required=visible;if(!visible)followUp.value='';}));
+</script></body></html>
